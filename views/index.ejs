@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="ko">
+
+<head>
+    <title>BboBooks</title>
+    <!-- Common -->
+    <%- include('common/common');%>
+</head>
+
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+    <!--Nav-->
+    <%- include('common/nav'); %>
+        <!-- Visual -->
+        <div class="main-content">
+            <%- include(page); %>
+        </div>
+        <!-- Footer -->
+        <%- include('common/footer'); %>
+</body>
+
 </html>

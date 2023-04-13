@@ -254,4 +254,6 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+mysqldata/data
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode,git,dotenv
