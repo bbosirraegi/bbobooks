@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var routes = require('./routes');
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
+require('dotenv').config();
 
 var app = express();
 
@@ -16,6 +19,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const maxAge = 60 * 1000 * 5;
+
+app.use(
+  session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    secure: false,
+    saveUninitialized: true,
+    store: new MemoryStore({ checkPeriod: maxAge }),
+    cookie: {
+      maxAge: maxAge,
+    },
+  })
+);
 
 routes.forEach((item) => {
   const { path, cont } = item;

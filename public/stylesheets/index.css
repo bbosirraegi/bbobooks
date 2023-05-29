@@ -3,17 +3,29 @@
     margin: 0;
 }
 
-html, body, .wrapper{
-    width: 100%;
-    min-height: 100%;
-}
-
-.wrapper .main-content{
+html, body{
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ .main-content{
+    width: 100%;
+    flex: 1;
 }
 
 a, a:link, a:visited, a:hover{
     text-decoration: none;
     color: black;
+}
+
+.min-h-500{
+    min-height: 500px;
+}
+
+.min-h-75{
+    min-height: 75vh;
 }

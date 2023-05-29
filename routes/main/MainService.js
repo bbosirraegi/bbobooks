@@ -7,6 +7,7 @@ const MainService = {
       const query = bookQuerys.getBookList();
       const conn = await db.getConnection();
       const [result] = await conn.query(query);
+      conn.release();
       return result;
     } catch (error) {
       throw error;
@@ -17,6 +18,7 @@ const MainService = {
       const query = querys.getData();
       const conn = await db.getConnection();
       const [result] = await conn.query(query);
+      conn.release();
       return result;
     } catch (error) {
       throw error;
