@@ -1,0 +1,92 @@
+<section class="bg-white py-8">
+    <!-- Main Content -->
+
+    <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+
+        <form id="store" class="w-full z-30 top-0 px-6 py-1" action="/order/set" method="post">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
+                    href="#">
+                    Cart
+                </a>
+
+                <div class="flex items-center" id="store-nav-content">
+
+                    <a class="pl-3 inline-block no-underline hover:text-black" href="#">
+                        <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24">
+                            <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
+                        </svg>
+                    </a>
+
+                    <a class="pl-3 inline-block no-underline hover:text-black" href="#">
+                        <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+            <div class="w-full border-b border-t">
+                <div class="grid grid-cols-5 gap-4 auto-cols-max p-5" >
+                    <div class="flex justify-center items-center">선택</div>
+                    <div class="flex justify-center items-center">도서 사진</div>
+                    <div class="flex justify-center items-center">도서 정보</div>
+                    <div class="flex justify-center items-center">수량</div>
+                    <div class="flex justify-center items-center">가격</div>
+                    <% for(var i=0; i < cart.length; i++){ %>
+                        <div class="flex justify-center items-center mb-1 mt-1">
+                            <input type="checkbox" name="order_item" value="<%=cart[i].book_id %>" class="accent-pink-300 focus:accent-pink-500" checked>
+                            <!-- <input type="hidden" name="book_id"  > -->
+                        </div>
+                        <div class="flex justify-center items-center mb-1 mt-1">
+                            <img class="hover:grow hover:shadow-lg" style="width:150px;object-fit:scale-down;"
+                                src="<%= cart[i].book_img %>" alt="0001">
+
+                        </div>
+                        <div class="flex justify-center items-center mb-1 mt-1">
+                            <%= cart[i].book_title %>
+                        </div>
+                        <div class="flex justify-center items-center mb-1 mt-1">
+                            <%= cart[i].cart_qty %>
+                        </div>
+                        <div class="flex justify-center items-center mb-1 mt-1">₩<%= cart[i].book_price.toLocaleString('ko-KR') %>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+            <div class="mt-5 grid grid-cols-5 gap-4 auto-cols-max p-5">
+            <div class="col-span-3"></div>
+            <div class="flex justify-center items-center">
+                <% const initialValue=0; const sumQty=cart.reduce( (accumulator, currentValue)=> accumulator +
+                    currentValue.cart_qty,
+                    initialValue
+                    );
+                    %>
+                    <%=sumQty %>
+            </div>
+            <div class="flex justify-center items-center">
+                <% const sumPrice=cart.reduce( (accumulator, currentValue)=> accumulator + currentValue.book_price *
+                    currentValue.cart_qty,
+                    initialValue
+                    );
+                    %>
+                    ₩ <%=sumPrice.toLocaleString('ko-KR') %>
+            </div>
+            <div class="col-span-4"></div>
+            <div class="flex justify-center items.center">
+                <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+                    주문하기
+                  </button>
+            </div>
+        </div>
+    </form>
+
+
+
+
+    </div>
+</section>

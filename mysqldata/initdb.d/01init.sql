@@ -122,7 +122,7 @@ ENGINE = InnoDB;
 -- Table `bbooks`.`t_cart`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bbooks`.`t_cart` (
-  `cart_id` INT NOT NULL,
+  `cart_id` VARCHAR(45) NOT NULL,
   `user_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cart_id`),
   INDEX `fk_t_cart_t_user1_idx` (`user_id` ASC) VISIBLE,
@@ -138,7 +138,7 @@ ENGINE = InnoDB;
 -- Table `bbooks`.`t_cart_detail`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bbooks`.`t_cart_detail` (
-  `cart_id` INT NOT NULL,
+  `cart_id` VARCHAR(45) NOT NULL,
   `book_id` INT NOT NULL,
   `cart_qty` INT NULL,
   PRIMARY KEY (`cart_id`, `book_id`),

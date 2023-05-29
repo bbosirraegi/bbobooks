@@ -1,0 +1,42 @@
+<section class="bg-white py-8">
+    <!-- Main Content -->
+
+    <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+
+        <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+                <div class="p-1">
+                    <img class="hover:grow hover:shadow-lg" style="width:336px;height:470px;object-fit:scale-down;"
+                        src="<%= book.book_img %>" alt="0001">
+                </div>
+                <div class="flex-1 p-1">
+                    <div class="text-2xl">
+                        <%=book.book_title%>
+                    </div>
+                    <div>
+                        재고: <%=book.book_qty%> 권
+                    </div>
+                    <div>
+                        가격: <%=book.book_price.toLocaleString('ko-KR')%> 원
+                    </div>
+                    <div>
+                        <%=book.book_desc%>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form action="/cart" method="post">
+                    <input type="hidden" name="book_id" value="<%=book.book_id%>">
+                    <button type="submit">
+                        <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 24 24"
+                            class="h-6 w-6 fill-current text-gray-500 hover:text-black"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.2,9h1.6V6.8H16V5.2H13.8V3H12.2V5.2H10V6.8h2.2ZM20,5v5.5L7.45,12.72,5,3H1.25a1,1,0,0,0,0,2H3.47L6.7,18H20V16H8.26l-.33-1.33L22,12.18V5ZM7,19a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,7,19Zm12,0a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,19,19Z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+</section>

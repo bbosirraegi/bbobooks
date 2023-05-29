@@ -28,4 +28,8 @@ module.exports = {
             ?
         )`;
   },
+  addCart: () => {
+    return `
+        INSERT INTO t_cart(user_id, cart_id) VALUES(?, ?);`;
+  },
 };

@@ -11,12 +11,18 @@ router.get('/join', async (req, res, next) => {
 });
 
 router.post('/login', async (req, res, next) => {
-  const result = await authService.login(req.body);
-  if (result) {
-    req.session.user = result;
-    return res.redirect('/');
+  try {
+    const result = await authService.login(req.body);
+    if (result) {
+      req.session.user = result;
+      return res.redirect('/');
+    }
+    res.render('auth', { page: 'pages/login', session: req.session });
+  } catch (error) {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.write(`<script>alert("${error.message}");</script>`);
+    res.write('<script>location.href="/auth/login";</script>');
   }
-  res.render('auth', { page: 'pages/login', session: req.session });
 });
 
 router.post('/join', async (req, res, next) => {

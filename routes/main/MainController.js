@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/mypage', async (req, res, next) => {
   console.log(req.session);
-  res.render('index', { page: 'pages/mypage', session: req.session });
+  res.render('index', { page: 'pages/mypage', session: req.session.user });
 });
 
 module.exports = router;
